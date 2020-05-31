@@ -1,22 +1,16 @@
 const normalizer = require("../helpers/normalizer");
 const getFile = require("../helpers/get-file");
 
-const knowWords = [
-    "programacao",
-    "tech",
-    "c",
-    "javascript",
-    "typescript",
-    "java",
-    "computer",
-    "certifications",
-    "hacking",
-    "software",
-    "engineering",
-];
+export class Document {
+    public messageId: string;
+    public date: string;
+    public name: string;
+    public mime_type: string;
+    public fileId: string;
+    public size: number;
+    public words: string[];
 
-module.exports = class Document {
-    constructor(arg) {
+    constructor(arg: any) {
         this.messageId = arg.message_id;
         this.date = arg.date;
         this.name = arg.document.file_name;
@@ -36,4 +30,4 @@ module.exports = class Document {
         });
         return name;
     }
-};
+}

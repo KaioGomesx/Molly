@@ -1,6 +1,8 @@
-module.exports = (bot) => ({
+import TelegramBot from "node-telegram-bot-api";
+
+module.exports = (bot: TelegramBot) => ({
     pattern: /.*teste?/,
-    command: (msg) => {
+    command: (msg: TelegramBot.Message, match: RegExpMatchArray) => {
         const replyMsg = msg.message_id;
         if (!replyMsg) {
             return;

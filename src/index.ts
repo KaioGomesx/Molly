@@ -1,15 +1,13 @@
-const TelegramBot = require("node-telegram-bot-api");
-const { join } = require("path");
-const glob = require("glob");
-const Document = require("./domain/document");
-
+import glob from "glob";
+import TelegramBot from "node-telegram-bot-api";
+import { join } from "path";
+import { Document } from "./domain/document";
 require("dotenv").config();
 
-const TOKEN = process.env.BOT_TOKEN;
-
+const TOKEN: string = process.env.BOT_TOKEN as never;
 const bot = new TelegramBot(TOKEN, { polling: true });
 
-const COMMANDS = join(process.cwd(), "src", "commands", "*.command.js");
+const COMMANDS = join(process.cwd(), "src", "commands", "*.command.ts");
 
 /*
     Command files
@@ -30,6 +28,7 @@ bot.on("document", (msg) => {
     const { id } = msg.chat;
     bot.sendDocument(id, message.fileId, {
         parse_mode: "Markdown",
-        caption: message.filename,
+        caption: message.filename
     });
 });
+2;
