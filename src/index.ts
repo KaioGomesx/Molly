@@ -3,7 +3,7 @@ import TelegramBot from "node-telegram-bot-api";
 import { join } from "path";
 import { Document } from "./domain/document";
 import { Command } from "./global";
-import { getMsgId } from "./chat";
+import { getMsgId, getUser } from "./chat";
 require("dotenv").config();
 
 const TOKEN: string = process.env.BOT_TOKEN as never;
@@ -32,10 +32,4 @@ bot.on("document", (msg) => {
         parse_mode: "Markdown",
         caption: message.filename
     });
-});
-
-bot.on("text", (e) => {
-    const id = getMsgId(e);
-    const rand1 = Math.floor(Math.random() * Math.floor(6));
-    const rand = Math.floor(Math.random() * Math.floor(6));
 });

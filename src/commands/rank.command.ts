@@ -42,7 +42,10 @@ const CommandMap = {
             if (troll.rankingName !== voterName || voterName === "@g4rcez") {
                 const voter = getUser(msg);
                 await Votes.vote("UP", troll, `${voter?.id}`);
-                bot.sendMessage(id, `${voter?.username} votou em ${user}`);
+                bot.sendMessage(
+                    id,
+                    `<a href="tg://user?id=${voter?.id}">${voter?.username || voter?.first_name}</a> votou em ${user}`
+                );
             } else {
                 bot.sendMessage(id, `Você não pode votar em você, cabron`);
             }
@@ -50,11 +53,21 @@ const CommandMap = {
     },
     ban: async (user: string, bot: TelegramBot, msg: TelegramBot.Message) => {
         const [troll] = await users().where("rankingName", "=", user.trim()).limit(1);
+        const { id } = msg.chat;
         if (troll) {
             const voter = getUser(msg);
-            await Votes.vote("BAN", troll, `${voter?.id}`);
-            const { id } = msg.chat;
-            bot.sendMessage(id, `@${voter?.username} deu banVote em ${user}`);
+            if (troll.rankingName !== "@g4rcez") {
+                await Votes.vote("BAN", troll, `${voter?.id}`);
+                bot.sendMessage(
+                    id,
+                    `<a href="tg://user?id=${voter?.id}">${voter?.username}</a> deu banVote em ${user}`,
+                    {
+                        parse_mode: "HTML"
+                    }
+                );
+            } else {
+                bot.sendMessage(id, "Não");
+            }
         }
     },
     promote: async (user: string, bot: TelegramBot, msg: TelegramBot.Message) => {
@@ -71,19 +84,13 @@ const CommandMap = {
             Users.updateRankByName(`${point}`, title);
             bot.sendMessage(msg.chat.id, `Update ${point} to ${title}`);
         }
-    },
-    test: async (user: string, bot: TelegramBot, msg: TelegramBot.Message) => {
-        const mark = getUser(msg)?.id;
-        // const htmlMark = `<a href="tg://user?id=${mark}">Test com HTML</a>`;
-        const id = msg.chat.id;
-        bot.sendMessage(id, `<a href="tg://user?id=726157999">Test com HTML</a>`, { parse_mode: "HTML" });
     }
 };
 
 type Commands = typeof CommandMap;
 
 export default (bot: TelegramBot) => ({
-    pattern: /^\/rank (add|list|ban|up|promote|test|banList)( @?\w+| \d\d? [@\w ]+| @\w+ [@\wçéáãõú ]+)?$/,
+    pattern: /^\/rank (add|list|ban|up|promote|banList)( @?\w+| \d\d? [@\w ]+| @\w+ [@\wçéáãõú ]+)?$/,
     command: async (msg: TelegramBot.Message, match: RegExpExecArray) => {
         const [, fn = "list", user]: [never, keyof Commands, string] = match as any;
         CommandMap[fn](`${user}`.trim(), bot, msg);
