@@ -2,7 +2,7 @@ import { createWriteStream, unlinkSync } from "fs";
 import TelegramBot from "node-telegram-bot-api";
 import ytdl from "ytdl-core";
 
-module.exports = (bot: TelegramBot) => ({
+export default (bot: TelegramBot) => ({
     pattern: /^\/(yt|ytconvert) https:\/\/(www.)?youtube\.com\/watch\?v=\w+$/,
     command: async (msg: TelegramBot.Message, [, link]: RegExpMatchArray) => {
         const {

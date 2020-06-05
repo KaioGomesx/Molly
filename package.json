@@ -15,11 +15,13 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
+        "array-linq": "^1.0.2",
         "cross-env": "^7.0.2",
         "dotenv": "^8.2.0",
         "env-cmd": "^10.1.0",
         "glob": "^7.1.6",
         "knex": "^0.21.1",
+        "linq-arrays": "^1.2.0",
         "node-telegram-bot-api": "^0.40.0",
         "sqlite3": "^4.2.0",
         "ytdl-core": "^2.0.1"

@@ -1,6 +1,6 @@
 import TelegramBot from "node-telegram-bot-api";
 
-module.exports = (bot: TelegramBot) => ({
+export default (bot: TelegramBot) => ({
     pattern: /.*teste?/,
     command: (msg: TelegramBot.Message, match: RegExpMatchArray) => {
         const replyMsg = msg.message_id;
@@ -8,9 +8,10 @@ module.exports = (bot: TelegramBot) => ({
             return;
         }
         const { id } = msg.chat;
-        bot.sendDocument(id, "./data/gif.gif", {
-            reply_to_message_id: replyMsg,
-            parse_mode: "Markdown",
-        });
-    },
+        // bot.sendDocument(id, "./data/gif.gif", {
+        //     reply_to_message_id: replyMsg,
+        //     parse_mode: "Markdown",
+        // });
+        bot.sendMessage(id, "<b>TESTANDO</b>", { parse_mode: "HTML" });
+    }
 });

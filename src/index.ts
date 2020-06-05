@@ -2,6 +2,8 @@ import glob from "glob";
 import TelegramBot from "node-telegram-bot-api";
 import { join } from "path";
 import { Document } from "./domain/document";
+import { Command } from "./global";
+import { getMsgId } from "./chat";
 require("dotenv").config();
 
 const TOKEN: string = process.env.BOT_TOKEN as never;
@@ -14,9 +16,9 @@ const COMMANDS = join(process.cwd(), "src", "commands", "*.command.ts");
 */
 glob(COMMANDS, (_, files) => {
     files.map((file) => {
-        const func = require(file);
-        const cmd = func(bot);
-        bot.onText(cmd.pattern, cmd.command);
+        const func: Command = require(file).default;
+        const exec = func(bot);
+        bot.onText(exec.pattern, exec.command);
     });
 });
 
@@ -31,4 +33,9 @@ bot.on("document", (msg) => {
         caption: message.filename
     });
 });
-2;
+
+bot.on("text", (e) => {
+    const id = getMsgId(e);
+    const rand1 = Math.floor(Math.random() * Math.floor(6));
+    const rand = Math.floor(Math.random() * Math.floor(6));
+});

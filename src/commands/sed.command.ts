@@ -1,6 +1,6 @@
 import TelegramBot from "node-telegram-bot-api";
 
-module.exports = (bot: TelegramBot) => ({
+export default (bot: TelegramBot) => ({
     pattern: /^s\/(.*?)\/(.*?)\/?$/,
     command: (msg: TelegramBot.Message, match: RegExpMatchArray) => {
         const replyMsg = msg.reply_to_message;

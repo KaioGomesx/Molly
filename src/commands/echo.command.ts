@@ -1,6 +1,6 @@
 import TelegramBot from "node-telegram-bot-api";
 
-module.exports = (bot: TelegramBot) => ({
+export default (bot: TelegramBot) => ({
     pattern: /^\/echo (.+)/,
     command: (msg: TelegramBot.Message, match: RegExpExecArray) => {
         const { id } = msg.chat;

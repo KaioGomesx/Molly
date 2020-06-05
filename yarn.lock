@@ -176,6 +176,11 @@ array-each@^1.0.1:
   resolved "https://registry.yarnpkg.com/array-each/-/array-each-1.0.1.tgz#a794af0c05ab1752846ee753a1f211a05ba0c44f"
   integrity sha1-p5SvDAWrF1KEbudTofIRoFugxE8=
 
+array-linq@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/array-linq/-/array-linq-1.0.2.tgz#8f14947262e0dd1dc3f4beb1596ed0ac768f326f"
+  integrity sha512-ZPpZfTbniOeGbL8Vyq1JjdgmR3YaJe/NU83pq8FAjVvrbdW60z9PgrSY0IEA+LCJJvca+xhjlIriB9YkY1kqHQ==
+
 array-slice@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/array-slice/-/array-slice-1.1.0.tgz#e368ea15f89bc7069f7ffb89aec3a6c7d4ac22d4"
@@ -1508,6 +1513,11 @@ liftoff@3.1.0:
     object.map "^1.0.0"
     rechoir "^0.6.2"
     resolve "^1.1.7"
+
+linq-arrays@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/linq-arrays/-/linq-arrays-1.2.0.tgz#d4b8e40072fe937fdf603d1f8963c4d364230389"
+  integrity sha512-wEXEQZh5sldOBPbGRrgKLrgpA6IykXW8wx4Bd+/Txp6MPJP57MuyTtJhYf6Av3uBwq/asiP1bLfcOIUxF628qw==
 
 lodash@^4.17.15:
   version "4.17.15"
