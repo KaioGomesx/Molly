@@ -1,23 +1,37 @@
 {
-  "name": "molly",
-  "version": "0.0.1",
-  "description": "",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "Molly",
-    "node-telegram-bot"
-  ],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "dependencies": "0.0.1",
-    "dotenv": "^8.2.0",
-    "glob": "^7.1.6",
-    "node-telegram-bot-api": "^0.40.0",
-    "ytdl-core": "^2.0.1"
-  }
+    "name": "molly",
+    "version": "0.0.1",
+    "description": "",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "nodemon -e ts,json --watch src --exec ts-node src",
+        "init": "prisma init",
+        "migrate": "prisma generate"
+    },
+    "keywords": [
+        "Molly",
+        "node-telegram-bot"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "array-linq": "^1.0.2",
+        "cross-env": "^7.0.2",
+        "dotenv": "^8.2.0",
+        "env-cmd": "^10.1.0",
+        "glob": "^7.1.6",
+        "knex": "^0.21.1",
+        "linq-arrays": "^1.2.0",
+        "node-telegram-bot-api": "^0.40.0",
+        "sqlite3": "^4.2.0",
+        "ytdl-core": "^2.0.1"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.1.1",
+        "@types/knex": "^0.16.1",
+        "@types/node-telegram-bot-api": "^0.40.3",
+        "@types/sqlite3": "^3.1.6",
+        "nodemon": "^2.0.4",
+        "tslib": "^2.0.0"
+    }
 }
